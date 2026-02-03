@@ -1,18 +1,23 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
+import React from "react";
+import ReactDOM from 'react-dom/client';
+import { ToDoList } from "./components/WorkList.jsx";
 
-//Bootstrap
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap"
 
-// index.css'
-import '../styles/index.css'
 
-// components
-import Home from './components/Home';
+const root = ReactDOM.createRoot(document.getElementById('root'));
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+root.render(
+
+
   <React.StrictMode>
-    <Home/>
-  </React.StrictMode>,
+
+    <div className="ToDoList">
+      <ToDoList />
+
+    </div>
+
+
+  </React.StrictMode>
+
+
 )
