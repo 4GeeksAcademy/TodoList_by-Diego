@@ -70,7 +70,28 @@ button.addTask_btn {
     background-color: blue;
     padding: 10px;
     border-radius: 100%;
+    cursor:pointer;
 }
+
+.addTask_btn {
+    border: none;
+    background-color: blue;
+    padding: 10px;
+    border-radius: 100%;
+    cursor:pointer;
+    transition: all 0.3s;
+}
+
+.addTask_btn:hover {
+    transform: scale(1.1);
+  
+}
+.addTask_btn:disabled {
+    background-color: lightgrey;
+    cursor: not-allowed;
+    transform:none;
+   
+   }
 
 
 .InputTask {
@@ -85,10 +106,7 @@ button.addTask_btn {
 
 }
 
-.addTask_btn:disabled {
-    background-color: lightgrey;
 
-}
 
 
 .iconAdd {
@@ -107,6 +125,7 @@ button.checkBox {
 
     background: none;
     border: none;
+    cursor: pointer;
 
 }
 
@@ -140,7 +159,7 @@ li.elemList {
     display: flex;
     justify-content: space-between;
     padding: 15px;
-    border-bottom: 1px solid lightgray;
+    border-bottom:1px solid #d8d8d8;
     text-align: left;
     font-size: 18px;
     gap: 20px;
