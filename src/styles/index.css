@@ -40,7 +40,7 @@ h3 {
     margin: 0px;
     font-size: 1.7rem;
     color: #121212;
-    }
+}
 
 .description {
     font-size: 14px;
@@ -55,7 +55,7 @@ h3 {
 input {
     border: none;
     background: none;
-    font-size: 16px;
+    font-size: 18px;
     width: 100%;
 
 
@@ -71,6 +71,7 @@ button.addTask_btn {
     padding: 10px;
     border-radius: 100%;
 }
+
 
 .InputTask {
     background-color: #f2f5f7;
@@ -89,11 +90,33 @@ button.addTask_btn {
 
 }
 
+
 .iconAdd {
     color: white;
-    font-size: 1.4rem;
+    font-size: 1.5rem;
 
 }
+
+.iconCheck {
+    font-size: 1.5rem;
+
+
+}
+
+button.checkBox {
+
+    background: none;
+    border: none;
+
+}
+
+.checkBox:hover {
+    color: green;
+    transform: scale(1.2);
+    transition: all 0.2s;
+}
+
+
 
 /* TASK LIST */
 
@@ -119,7 +142,8 @@ li.elemList {
     padding: 15px;
     border-bottom: 1px solid lightgray;
     text-align: left;
-    font-size: 16px;
+    font-size: 18px;
+    gap: 20px;
     color: #121212;
 }
 
@@ -129,10 +153,32 @@ li.elemList {
 
 }
 
+input.EditTaskText {
+    text-align: center;
+    color: darkgray;
+}
+
 .TaskCounter {
     color: gray;
     font-size: 14px;
 }
+
+.left {
+    display: flex;
+    gap: 10px;
+}
+
+.text span {
+
+    overflow-wrap: break-word;
+    word-break: break-all;
+
+    /* Asegúrate de que el texto tenga espacio para crecer hacia abajo
+    flex: 1; 
+    min-width: 0; 
+    padding: 0 10px; */
+}
+
 
 
 
@@ -140,7 +186,7 @@ li.elemList {
 /* DELETE */
 .iconDelete {
     color: #121212;
-    font-size: 1.1rem;
+    font-size: 1.5rem;
 }
 
 .elemList:hover .delete-btn {
@@ -149,9 +195,7 @@ li.elemList {
 
 .delete-btn:hover .iconDelete {
     color: #e74c3c;
-    /* Un rojo atractivo */
     transform: scale(1.2);
-    /* Se agranda un poquito */
     transition: all 0.2s;
 }
 

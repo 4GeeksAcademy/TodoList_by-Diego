@@ -6,12 +6,13 @@ export function ToDoList() {
 
     const [inputTask, setInputTask] = useState("");
     const [list, setList] = useState([]);
+    const [check, setCheck] = useState("")
 
     const addTask = (e) => {
         if (e) { e.preventDefault(); }
 
         if (inputTask.trim() !== "") {
-            const newTask = { id: Date.now(), texto: inputTask };
+            const newTask = { id: Date.now(), texto: inputTask, check: false, isEditing: false, };
             setList([...list, newTask]);
             setInputTask("");
         }
@@ -23,6 +24,28 @@ export function ToDoList() {
         setList(newList);
 
     };
+
+
+    const checkTask = (id) => {
+
+        const taskChecked = list.map(task => task.id === id ? { ...task, check: !task.check } : task);
+        setList(taskChecked);
+
+    }
+
+
+    const editTask = (id) => {
+        const editarTask = list.map(task => task.id === id ? { ...task, isEditing: !task.isEditing } : task)
+        setList(editarTask)
+
+
+    }
+
+    const updateTaskText = (id, newText) => {
+        const taskUpdate = list.map(task => task.id === id ? { ...task, texto: newText } : task)
+        setList(taskUpdate)
+    }
+
 
     return (
 
@@ -37,16 +60,35 @@ export function ToDoList() {
 
             <div className="TaskList">
                 <ul className="List">
-                    {list.length === 0 ? (<li className="noItems">There are no pending tasks</li>) : (list.map((task) => (
-                        <li className="elemList" key={task.id}>{task.texto}
-                            <button className="delete-btn" onClick={() => deleteTask(task.id)}><i className="iconDelete fa-regular fa-trash-can"></i></button>
+                    {list.length === 0 ? <li className="noItems">There are no pending tasks</li> : list.map((task) => (
+                        <li className="elemList" key={task.id}>
+                            <div className="left">
+                                <button className="checkBox" onClick={() => checkTask(task.id)}>
+
+                                    {task.check ? <i className="iconCheck fa-regular fa-circle-check"></i> : <i className="iconCheck fa-regular fa-circle"></i>}
+
+
+                                </button>
+
+                                <div className="text">
+                                    {task.isEditing ?
+                                        (<input className="EditTaskText" onChange={(e) => updateTaskText(task.id, e.target.value)}
+                                            value={task.texto} onBlur={() => editTask(task.id)} onKeyDown={(e) => e.key === 'Enter' && editTask(task.id)} />) :
+
+                                        (<span onClick={() => editTask(task.id)}> {task.texto}</span>)
+
+                                    }
+                                </div>
+                            </div>
+
+                            < button className="delete-btn" onClick={() => deleteTask(task.id)}><i className="iconDelete fa-regular fa-trash-can"></i></button>
                         </li>
-                    )))}
+                    ))}
 
 
                 </ul>
 
-            </div>
+            </div >
 
             <div className="TaskCounter">
                 <footer><p>Total tasks: {list.length}</p></footer>
@@ -54,7 +96,7 @@ export function ToDoList() {
             </div>
 
 
-        </div>
+        </div >
 
 
     )
